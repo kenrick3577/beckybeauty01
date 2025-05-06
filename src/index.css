@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Base font size adjustments for mobile */
+  html {
+    font-size: 14px;
+  }
+  
+  @media (max-width: 390px) {
+    html {
+      font-size: 12px;
+    }
+  }
+  
+  /* Improve tap targets on mobile */
+  button, a, .tap-target {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Improve form elements for mobile */
+  input, select, textarea {
+    font-size: 16px; /* Prevents iOS zoom on focus */
+    padding: 0.75rem;
+  }
+  
+  /* Responsive table adjustments */
+  @media (max-width: 390px) {
+    table {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+    }
+    
+    th, td {
+      white-space: nowrap;
+      padding: 0.5rem;
+    }
+    
+    .mobile-card {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  /* iPhone 16 specific optimizations */
+  @media (min-width: 375px) and (max-width: 390px) {
+    .iphone-container {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+    
+    .iphone-text-sm {
+      font-size: 0.875rem;
+    }
+    
+    .iphone-text-xs {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+@layer base {
+  html {
+    font-size: 14px;
+  }
+  
+  @media (max-width: 640px) {
+    html {
+      font-size: 12px;
+    }
+  }
+  
+  /* Improve tap targets on mobile */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve table readability on mobile */
+  table {
+    @apply w-full text-left border-collapse;
+  }
+  
+  th, td {
+    @apply p-2 sm:p-4;
+  }
+  
+  /* Responsive text sizes */
+  h1 { @apply text-2xl sm:text-3xl md:text-4xl font-bold; }
+  h2 { @apply text-xl sm:text-2xl md:text-3xl font-bold; }
+  h3 { @apply text-lg sm:text-xl md:text-2xl font-bold; }
+  
+  /* Base text and spacing */
+  p, li { @apply text-sm sm:text-base; }
+  
+  /* Form elements */
+  input, select, textarea {
+    @apply text-base sm:text-sm;
+    @apply p-3 sm:p-2;
+    @apply rounded-lg;
+  }
+}
+
+@layer base {
+  :root {
+    --color-primary-50: 253 242 248;
+    --color-primary-100: 252 231 243;
+    --color-primary-200: 251 207 232;
+    --color-primary-300: 249 168 212;
+    --color-primary-400: 244 114 182;
+    --color-primary-500: 236 72 153;
+    --color-primary-600: 219 39 119;
+    --color-primary-700: 190 24 93;
+    --color-primary-800: 157 23 77;
+    --color-primary-900: 131 24 67;
+    --color-primary-950: 80 7 36;
+  }
+  
+  /* Custom scrollbar for better mobile experience */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.5);
+    border-radius: 20px;
+  }
+}
+
+/* Mobile-first utility classes */
+.mobile-only {
+  display: block;
+}
+
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .mobile-only {
+    display: none;
+  }
+  
+  .desktop-only {
+    display: block;
+  }
+}
