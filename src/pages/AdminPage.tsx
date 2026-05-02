@@ -21,9 +21,16 @@ export default function AdminPage() {
   const [searchParams] = useSearchParams();
   const activeTab = (searchParams.get('tab') as Tab) || 'appointments';
   const view = searchParams.get('view');
-  const { appointments, fetchAppointments, getNextAppointment } = useAppointmentStore();
+  const { fetchAppointments, getNextAppointment } = useAppointmentStore();
   const { settings, updateSettings } = useAdminSettingsStore();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(() => window.innerWidth >= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     if (activeTab === 'appointments') {
@@ -73,9 +80,9 @@ export default function AdminPage() {
            style={{display: isSidebarOpen ? 'block' : 'none'}}
            onClick={() => setIsSidebarOpen(false)}></div>
 
-      {/* Sidebar - conditionally rendered for mobile, always visible for desktop */}
-      {(isSidebarOpen || window.innerWidth >= 768) && (
-        <AdminSidebar isMobile={window.innerWidth < 768} />
+      {/* Sidebar - always visible on desktop, toggled on mobile */}
+      {(isSidebarOpen || isDesktop) && (
+        <AdminSidebar isMobile={!isDesktop} />
       )}
       
       {/* Main Content */}

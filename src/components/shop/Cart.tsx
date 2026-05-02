@@ -80,7 +80,8 @@ export default function Cart() {
                 <div className="flex items-center">
                   <button
                     onClick={() => updateCartItemQuantity(item.product.id, item.quantity - 1)}
-                    className="p-1 text-gray-500 hover:text-gray-700 h-8 w-8 flex items-center justify-center rounded-full"
+                    disabled={item.quantity <= 1}
+                    className="p-1 text-gray-500 hover:text-gray-700 h-8 w-8 flex items-center justify-center rounded-full disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     <ChevronDown className="h-3 w-3" />
                   </button>

@@ -98,6 +98,13 @@ export default function ServicesPage() {
           <div className="mt-12 grid gap-8 lg:grid-cols-2">
             {services.map((service) => (
               <div key={service.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div className="h-48 bg-gray-200">
+                  <img
+                    src={service.image_url || 'https://images.pexels.com/photos/3738339/pexels-photo-3738339.jpeg?auto=compress&cs=tinysrgb&w=1600'}
+                    alt={service.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 <div className="p-6">
                   <div className="flex items-center justify-between">
                     <h3 className="text-xl font-semibold text-gray-900">{service.name}</h3>
@@ -106,14 +113,14 @@ export default function ServicesPage() {
                       {service.price.toFixed(2)}
                     </div>
                   </div>
-                  
+
                   <div className="mt-2 flex items-center text-sm text-gray-500">
                     <Clock className="h-4 w-4 mr-1" />
                     {service.duration} minutes
                   </div>
-                  
+
                   <p className="mt-4 text-gray-600">{service.description}</p>
-                  
+
                   <div className="mt-6">
                     <Link
                       to="/appointments"
@@ -123,13 +130,6 @@ export default function ServicesPage() {
                       Book Now
                     </Link>
                   </div>
-                </div>
-                <div className="h-48 bg-gray-200">
-                  <img
-                    src={service.image_url}
-                    alt={service.name}
-                    className="w-full h-full object-cover"
-                  />
                 </div>
               </div>
             ))}

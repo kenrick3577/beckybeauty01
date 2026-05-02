@@ -13,6 +13,11 @@ import SignupPage from './pages/SignupPage';
 import ProfilePage from './pages/ProfilePage';
 import AdminPage from './pages/AdminPage';
 import UnauthorizedPage from './pages/UnauthorizedPage';
+import CheckoutSuccessPage from './pages/CheckoutSuccessPage';
+import ResetPasswordPage from './pages/ResetPasswordPage';
+import PrivacyPage from './pages/PrivacyPage';
+import TermsPage from './pages/TermsPage';
+import NotFoundPage from './pages/NotFoundPage';
 import AuthGuard from './components/layout/AuthGuard';
 
 export default function App() {
@@ -30,9 +35,14 @@ export default function App() {
               <Route path="/appointments" element={<AuthGuard><AppointmentsPage /></AuthGuard>} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
+              <Route path="/reset-password" element={<ResetPasswordPage />} />
               <Route path="/profile" element={<AuthGuard><ProfilePage /></AuthGuard>} />
               <Route path="/admin" element={<AuthGuard requireAdmin><AdminPage /></AuthGuard>} />
               <Route path="/unauthorized" element={<UnauthorizedPage />} />
+              <Route path="/checkout-success" element={<AuthGuard><CheckoutSuccessPage /></AuthGuard>} />
+              <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/terms" element={<TermsPage />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>
           <Footer />
